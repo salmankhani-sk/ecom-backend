@@ -82,9 +82,9 @@ def create_product(payload: ProductCreate, db: Session = Depends(get_db)):
     db.refresh(item)
     return item
 
-@app.get("/products", response_model=List[ProductOut])
-def list_products(db: Session = Depends(get_db)):
-    return db.query(models.Product).order_by(models.Product.id.desc()).all()
+# @app.get("/products", response_model=List[ProductOut])
+# def list_products(db: Session = Depends(get_db)):
+#     return db.query(models.Product).order_by(models.Product.id.desc()).all()
 
 @app.get("/categories/{category_id}/products", response_model=List[ProductOut])
 def list_products_by_category(category_id: int, db: Session = Depends(get_db)):
