@@ -18,3 +18,11 @@ class Product(Base):
     in_stock: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=text("true"))
     category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"), nullable=True)
     category: Mapped["Category"] = relationship("Category", back_populates="products")
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(50), nullable=False, unique=True, index=True)
+    email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(128), nullable=False) 
+    role:Mapped[str] = mapped_column(String(20), nullable=False, server_default=text("'user'"))

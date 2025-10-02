@@ -7,7 +7,7 @@ import os
 # read .env into environment variables
 load_dotenv()
 
-# single full URL from .env (simple for Day-1)
+# single full URL from .env 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
     
